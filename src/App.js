@@ -16,34 +16,35 @@ function App() {
   const detailsInputBox = <input placeholder={inpPlaceHolder} autoComplete/> 
   const mArr = [1,2,3,4]
 
+  const styles=
+    {
+      margin: '16px',
+      padding: '16px',
+      boxSizing: 'border-box',
+      borderRadius: '5px',
+      boxShadow: '0 2px 5px #ccc'
+    }
+
   return (
     <div className="App">
-      <div style={
-        {
-          margin: '16px',
-          padding: '16px',
-          boxSizing: 'border-box',
-          borderRadius: '5px',
-          boxShadow: '0 2px 5px #ccc'
-        }
-      }>
+      <div className="BlogCard">
         <h2>Full Name: {fName} {lName}</h2>
         <h3>Full Name: {`${fName} ${lName}`}</h3>
         <h4>Full Name: {getFulName(fName, lName)} </h4>
       </div>
       <hr></hr>
-      <div>
+      <div style={styles}>
         <h2>{blogObj.title}</h2>
         <p>{blogObj.description}</p>
       </div>
       <hr></hr>
-      <div>
+      <div className="BlogCard">
         <h2>Full Name: {fName} {lName}</h2>
         <h3>Full Name: {`${fName} ${lName}`}</h3>
         <h4>Full Name: {getFulName(fName, lName)} </h4>
       </div>
       <hr></hr>
-      <div>
+      <div className="BlogCard">
         <p>Aged: {age}</p>
         <p>Degree: {dgree}</p> 
         {mArr[0]}
