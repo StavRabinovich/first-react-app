@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import BlogCardd from './BlogCardd';
 
 function App() {
   const blogObj = {
@@ -25,8 +26,38 @@ function App() {
       boxShadow: '0 2px 5px #ccc'
     }
 
+  const blogArr = [
+    {
+      title: 'Blog Title 1',
+      description: 'Blah blah paka paka'
+    },
+    {
+      title: 'Blog Title 2',
+      description: 'Blah paka paka'
+    },
+    {
+      title: 'Blog Title 1',
+      description: 'Blah blah paka'
+    }
+  ]
+
+
+  const blogCards = blogArr.map((item, pos)=>{
+    // console.log(item);
+    
+    return(
+      <BlogCardd key={pos} />
+      // <div className="BlogCard">
+      //   <h2>Title: {item.title}</h2>
+      //   <p>Description: {item.description} </p>
+      // </div>
+    )
+
+  })
+
   return (
     <div className="App">
+      {blogCards}
       <div className="BlogCard">
         <h2>Full Name: {fName} {lName}</h2>
         <h3>Full Name: {`${fName} ${lName}`}</h3>
