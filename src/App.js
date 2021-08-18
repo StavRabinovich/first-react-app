@@ -3,6 +3,8 @@ import './App.css';
 // import BlogCardd from './BlogCardd';
 import BlogItem from './BlogCardd';
 import {isArrayEmpty} from './Utls';
+import './BlogCardd.css';
+import classes from './BlogCardd.module.css'
 
 function App() {
   const blogObj = {
