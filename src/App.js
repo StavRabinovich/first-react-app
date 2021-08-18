@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import BlogCardd from './BlogCardd';
+// import BlogCardd from './BlogCardd';
+import BlogItem from './BlogCardd';
+import {isArrayEmpty} from './Utls';
 
 function App() {
   const blogObj = {
@@ -42,12 +44,13 @@ function App() {
   ]
 
 
-  const blogCards = blogArr.map((item, pos)=>{
+  // const blogCards = blogArr.map((item, pos)=>{
+  const blogCards = isArrayEmpty(blogArr)? [] : blogArr.map((item, pos)=>{
     // console.log(item);
     
     return(
       //<BlogCardd key={pos} title="Test Title" description="Test desctription"/>
-      <BlogCardd key={pos} title={item.title} description={item.description} id={item.id}/>
+      <BlogItem key={pos} title={item.title} description={item.description} id={item.id}/>
       // <div className="BlogCard">
       //   <h2>Title: {item.title}</h2>
       //   <p>Description: {item.description} </p>

@@ -1,7 +1,10 @@
 import React from 'react';
+import { dumpLogs } from './Utls';
+
 
 const BlogCardd = (props) => {
-  console.log(props);
+  // console.log(props);
+  dumpLogs(props);
 
 
   return(
