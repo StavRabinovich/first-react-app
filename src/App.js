@@ -46,7 +46,8 @@ function App() {
     // console.log(item);
     
     return(
-      <BlogCardd key={pos} />
+      //<BlogCardd key={pos} title="Test Title" description="Test desctription"/>
+      <BlogCardd key={pos} title={item.title} description={item.description} id={item.id}/>
       // <div className="BlogCard">
       //   <h2>Title: {item.title}</h2>
       //   <p>Description: {item.description} </p>
