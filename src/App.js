@@ -5,23 +5,28 @@ import BlogItem from './BlogCardd';
 import {isArrayEmpty} from './Utls';
 import './BlogCardd.css';
 import classes from './BlogCardd.module.css'
+import React from 'react';
 
-function App() {
-  const blogObj = {
+class App extends React.Component {
+  state = {
+    showBlogs: true
+  }
+
+  blogObj = {
     title: 'Blog Title 1',
     description: 'Blah blah paka paka'
   }
-  const fName = 'Stav';
-  const lName = 'Rabinovich';
-  const age = 23; 
-  const dgree = 'SW Engineering';
+  fName = 'Stav';
+  lName = 'Rabinovich';
+  age = 23; 
+  dgree = 'SW Engineering';
 
-  const getFulName = (fName, lName) => `${fName} ${lName}`
-  const inpPlaceHolder = 'Enter details:'
-  const detailsInputBox = <input placeholder={inpPlaceHolder} autoComplete/> 
-  const mArr = [1,2,3,4]
+  getFulName = (fName, lName) => `${fName} ${lName}`;
+  inpPlaceHolder = 'Enter details:';
+  detailsInputBox = <input placeholder={this.inpPlaceHolder} autoComplete/> 
+  mArr = [1,2,3,4]
 
-  const styles=
+  styles=
     {
       margin: '16px',
       padding: '16px',
@@ -30,7 +35,7 @@ function App() {
       boxShadow: '0 2px 5px #ccc'
     }
 
-  const blogArr = [
+  blogArr = [
     {
       title: 'Blog Title 1',
       description: 'Blah blah paka paka'
@@ -45,9 +50,8 @@ function App() {
     }
   ]
 
-
   // const blogCards = blogArr.map((item, pos)=>{
-  const blogCards = isArrayEmpty(blogArr)? [] : blogArr.map((item, pos)=>{
+  blogCards = isArrayEmpty(this.blogArr)? [] : this.blogArr.map((item, pos)=>{
     // console.log(item);
     
     return(
@@ -61,34 +65,61 @@ function App() {
 
   })
 
-  return (
-    <div className="App">
-      {blogCards}
-      <div className="BlogCard">
-        <h2>Full Name: {fName} {lName}</h2>
-        <h3>Full Name: {`${fName} ${lName}`}</h3>
-        <h4>Full Name: {getFulName(fName, lName)} </h4>
+  onHideBtnClick = () => {
+    // alert('Button Clicked');
+    // this.showBlogs = false;
+    // this.setState({showBlogs: false});
+    // let updatedState = !this.state.showBlogs;
+    // this.setState({showBlogs: updatedState});
+    this.setState((prevState, prevProps)=> {
+      return {showBlogs: !prevState.showBlogs}
+    });
+
+    // console.log(this.showBlogs);
+  }
+
+  // /*let*/showBlogs = true;
+  // /*let*/showBlogs = false;
+
+  render(){
+    console.log('Render Called');
+    return (
+      <div className="App">
+        {/* <button onClick={this.onHideBtnClick}>Hide List</button> */}
+        <button onClick={this.onHideBtnClick}>{this.state.showBlogs ? 'Hide': 'Show'} List</button>
+        <br></br>
+        {
+          // this.showBlogs ? this.blogCards : null
+          this.state.showBlogs ? this.blogCards : null
+        }
+        {/* {this.blogCards} */}
+        
+        <div className="BlogCard">
+          <h2>Full Name: {this.fName} {this.lName}</h2>
+          <h3>Full Name: {`${this.fName} ${this.lName}`}</h3>
+          <h4>Full Name: {this.getFulName(this.fName, this.lName)} </h4>
+        </div>
+        <hr></hr>
+        <div style={this.styles}>
+          <h2>{this.blogObj.title}</h2>
+          <p>{this.blogObj.description}</p>
+        </div>
+        <hr></hr>
+        <div className="BlogCard">
+          <h2>Full Name: {this.fName} {this.lName}</h2>
+          <h3>Full Name: {`${this.fName} ${this.lName}`}</h3>
+          <h4>Full Name: {this.getFulName(this.fName, this.lName)} </h4>
+        </div>
+        <hr></hr>
+        <div className="BlogCard">
+          <p>Aged: {this.age}</p>
+          <p>Degree: {this.dgree}</p> 
+          {this.mArr[0]}
+          {this.detailsInputBox}
+        </div>
       </div>
-      <hr></hr>
-      <div style={styles}>
-        <h2>{blogObj.title}</h2>
-        <p>{blogObj.description}</p>
-      </div>
-      <hr></hr>
-      <div className="BlogCard">
-        <h2>Full Name: {fName} {lName}</h2>
-        <h3>Full Name: {`${fName} ${lName}`}</h3>
-        <h4>Full Name: {getFulName(fName, lName)} </h4>
-      </div>
-      <hr></hr>
-      <div className="BlogCard">
-        <p>Aged: {age}</p>
-        <p>Degree: {dgree}</p> 
-        {mArr[0]}
-        {detailsInputBox}
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
