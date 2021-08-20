@@ -37,18 +37,28 @@ class App extends React.Component {
 
   blogArr = [
     {
+      id: 1,
       title: 'Blog Title 1',
-      description: 'Blah blah paka paka'
+      description: 'Blah blah paka paka',
+      lCount: 10
     },
     {
+      id: 2,
       title: 'Blog Title 2',
-      description: 'Blah paka paka'
+      description: 'Blah paka paka',
+      lCount: 0,
     },
     {
+      id: 3,
       title: 'Blog Title 1',
-      description: 'Blah blah paka'
+      description: 'Blah blah paka',
+      lCount: 0,
     }
   ]
+ 
+  onLikeButtonClick = () => {
+    alert("Like Clicked!");
+  }
 
   // const blogCards = blogArr.map((item, pos)=>{
   blogCards = isArrayEmpty(this.blogArr)? [] : this.blogArr.map((item, pos)=>{
@@ -56,7 +66,8 @@ class App extends React.Component {
     
     return(
       //<BlogCardd key={pos} title="Test Title" description="Test desctription"/>
-      <BlogItem key={pos} title={item.title} description={item.description} id={item.id}/>
+      <BlogItem key={pos} title={item.title} description={item.description} id={item.id} 
+      lCount={item.lCount} onLikeButtonClick={this.onLikeButtonClick}/>
       // <div className="BlogCard">
       //   <h2>Title: {item.title}</h2>
       //   <p>Description: {item.description} </p>
@@ -78,6 +89,8 @@ class App extends React.Component {
     // console.log(this.showBlogs);
   }
 
+
+ 
   // /*let*/showBlogs = true;
   // /*let*/showBlogs = false;
 
