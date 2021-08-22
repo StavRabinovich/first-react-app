@@ -9,7 +9,27 @@ import React from 'react';
 
 class App extends React.Component {
   state = {
-    showBlogs: true
+    showBlogs: true,
+    blogArr: [
+      {
+        id: 1,
+        title: 'Blog Title 1',
+        description: 'Blah blah paka paka',
+        lCount: 10
+      },
+      {
+        id: 2,
+        title: 'Blog Title 2',
+        description: 'Blah paka paka',
+        lCount: 0,
+      },
+      {
+        id: 3,
+        title: 'Blog Title 1',
+        description: 'Blah blah paka',
+        lCount: 0,
+      }
+    ],
   }
 
   blogObj = {
@@ -35,47 +55,35 @@ class App extends React.Component {
       boxShadow: '0 2px 5px #ccc'
     }
 
-  blogArr = [
-    {
-      id: 1,
-      title: 'Blog Title 1',
-      description: 'Blah blah paka paka',
-      lCount: 10
-    },
-    {
-      id: 2,
-      title: 'Blog Title 2',
-      description: 'Blah paka paka',
-      lCount: 0,
-    },
-    {
-      id: 3,
-      title: 'Blog Title 1',
-      description: 'Blah blah paka',
-      lCount: 0,
-    }
-  ]
- 
   onLikeButtonClick = (pos) => {
-    alert("Like clicked at position => "+ pos);
+    // alert("Like clicked at position => "+ pos);
+    const updatedBlogLst = this.state.blogArr;
+    const updatedBlogObj = updatedBlogLst[pos];
+
+    updatedBlogObj.lCount = updatedBlogObj.lCount + 1;
+    updatedBlogLst[pos] = updatedBlogObj;
+
+    this.setState({blogArr: updatedBlogLst});
+
+    console.log(updatedBlogObj);
   }
 
-  // const blogCards = blogArr.map((item, pos)=>{
-  blogCards = isArrayEmpty(this.blogArr)? [] : this.blogArr.map((item, pos)=>{
-    // console.log(item);
+  // // const blogCards = blogArr.map((item, pos)=>{
+  // blogCards = isArrayEmpty(this.state.blogArr)? [] : this.state.blogArr.map((item, pos)=>{
+  //   // console.log(item);
     
-    return(
-      //<BlogCardd key={pos} title="Test Title" description="Test desctription"/>
-      <BlogItem key={pos} title={item.title} description={item.description} id={item.id} 
-      lCount={item.lCount} onLikeButtonClick={() =>this.onLikeButtonClick(pos)}
-      /*position={pos}*/ />
-      // <div className="BlogCard">
-      //   <h2>Title: {item.title}</h2>
-      //   <p>Description: {item.description} </p>
-      // </div>
-    )
+  //   return(
+  //     //<BlogCardd key={pos} title="Test Title" description="Test desctription"/>
+  //     <BlogItem key={pos} title={item.title} description={item.description} id={item.id} 
+  //     lCount={item.lCount} onLikeButtonClick={() =>this.onLikeButtonClick(pos)}
+  //     /*position={pos}*/ />
+  //     // <div className="BlogCard">
+  //     //   <h2>Title: {item.title}</h2>
+  //     //   <p>Description: {item.description} </p>
+  //     // </div>
+  //   )
 
-  })
+  // })
 
   onHideBtnClick = () => {
     // alert('Button Clicked');
@@ -97,6 +105,15 @@ class App extends React.Component {
 
   render(){
     console.log('Render Called');
+    console.log(this.state);
+
+    const blogCards = isArrayEmpty(this.state.blogArr)? [] : this.state.blogArr.map((item, pos)=>{
+      return(
+      <BlogItem key={pos} title={item.title} description={item.description} id={item.id} 
+      lCount={item.lCount} onLikeButtonClick={() =>this.onLikeButtonClick(pos)} />
+      ) 
+    })
+
     return (
       <div className="App">
         {/* <button onClick={this.onHideBtnClick}>Hide List</button> */}
@@ -104,7 +121,7 @@ class App extends React.Component {
         <br></br>
         {
           // this.showBlogs ? this.blogCards : null
-          this.state.showBlogs ? this.blogCards : null
+          this.state.showBlogs ? blogCards : null
         }
         {/* {this.blogCards} */}
         
