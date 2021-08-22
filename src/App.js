@@ -56,8 +56,8 @@ class App extends React.Component {
     }
   ]
  
-  onLikeButtonClick = () => {
-    alert("Like Clicked!");
+  onLikeButtonClick = (pos) => {
+    alert("Like clicked at position => "+ pos);
   }
 
   // const blogCards = blogArr.map((item, pos)=>{
@@ -67,7 +67,8 @@ class App extends React.Component {
     return(
       //<BlogCardd key={pos} title="Test Title" description="Test desctription"/>
       <BlogItem key={pos} title={item.title} description={item.description} id={item.id} 
-      lCount={item.lCount} onLikeButtonClick={this.onLikeButtonClick}/>
+      lCount={item.lCount} onLikeButtonClick={() =>this.onLikeButtonClick(pos)}
+      /*position={pos}*/ />
       // <div className="BlogCard">
       //   <h2>Title: {item.title}</h2>
       //   <p>Description: {item.description} </p>
