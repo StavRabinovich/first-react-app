@@ -1,36 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
 import BlogItem from './BlogCardd';
 import {isArrayEmpty} from './Utls';
 import './BlogCardd.css';
-import classes from './BlogCardd.module.css'
 import React from 'react';
 
 class App extends React.Component {
-  state = {
-    showBlogs: true,
-    blogArr: [
-      {
-        id: 1,
-        title: 'Blog Title 1',
-        description: 'Blah blah paka paka',
-        lCount: 10
-      },
-      {
-        id: 2,
-        title: 'Blog Title 2',
-        description: 'Blah paka paka',
-        lCount: 0,
-      },
-      {
-        id: 3,
-        title: 'Blog Title 1',
-        description: 'Blah blah paka',
-        lCount: 0,
-      }
-    ],
+  constructor(props){
+    super(props);
+    this.state = {
+      showBlogs: true,
+      blogArr: [
+        {
+          id: 1,
+          title: 'Blog Title 1',
+          description: 'Blah blah paka paka',
+          lCount: 10
+        },
+        {
+          id: 2,
+          title: 'Blog Title 2',
+          description: 'Blah paka paka',
+          lCount: 0,
+        },
+        {
+          id: 3,
+          title: 'Blog Title 1',
+          description: 'Blah blah paka',
+          lCount: 0,
+        }
+      ],
+   }
+   console.log('Inside Constructor');
   }
-
+ 
   blogObj = {
     title: 'Blog Title 1',
     description: 'Blah blah paka paka'
@@ -53,16 +55,12 @@ class App extends React.Component {
       borderRadius: '5px',
       boxShadow: '0 2px 5px #ccc'
     }
-
   onLikeButtonClick = (pos) => {
     const updatedBlogLst = this.state.blogArr;
     const updatedBlogObj = updatedBlogLst[pos];
-
     updatedBlogObj.lCount = updatedBlogObj.lCount + 1;
     updatedBlogLst[pos] = updatedBlogObj;
-
     this.setState({blogArr: updatedBlogLst});
-
     console.log(updatedBlogObj);
   }
   onHideBtnClick = () => {
@@ -71,6 +69,15 @@ class App extends React.Component {
     });
   }
 
+  componentDidMount(){
+    console.log('Component Did Mount');
+  }
+  componentWillUnmount(){
+    console.log('Component Unmounting');
+  }
+  componentDidUpdate(){
+    console.log('Component Did Update');
+  }
   render(){
     console.log('Render Called');
     console.log(this.state);
@@ -114,5 +121,4 @@ class App extends React.Component {
     );
   }
 }
-
 export default App;
