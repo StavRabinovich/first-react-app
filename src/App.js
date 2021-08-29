@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-// import BlogCardd from './BlogCardd';
 import BlogItem from './BlogCardd';
 import {isArrayEmpty} from './Utls';
 import './BlogCardd.css';
@@ -56,7 +55,6 @@ class App extends React.Component {
     }
 
   onLikeButtonClick = (pos) => {
-    // alert("Like clicked at position => "+ pos);
     const updatedBlogLst = this.state.blogArr;
     const updatedBlogObj = updatedBlogLst[pos];
 
@@ -67,41 +65,11 @@ class App extends React.Component {
 
     console.log(updatedBlogObj);
   }
-
-  // // const blogCards = blogArr.map((item, pos)=>{
-  // blogCards = isArrayEmpty(this.state.blogArr)? [] : this.state.blogArr.map((item, pos)=>{
-  //   // console.log(item);
-    
-  //   return(
-  //     //<BlogCardd key={pos} title="Test Title" description="Test desctription"/>
-  //     <BlogItem key={pos} title={item.title} description={item.description} id={item.id} 
-  //     lCount={item.lCount} onLikeButtonClick={() =>this.onLikeButtonClick(pos)}
-  //     /*position={pos}*/ />
-  //     // <div className="BlogCard">
-  //     //   <h2>Title: {item.title}</h2>
-  //     //   <p>Description: {item.description} </p>
-  //     // </div>
-  //   )
-
-  // })
-
   onHideBtnClick = () => {
-    // alert('Button Clicked');
-    // this.showBlogs = false;
-    // this.setState({showBlogs: false});
-    // let updatedState = !this.state.showBlogs;
-    // this.setState({showBlogs: updatedState});
     this.setState((prevState, prevProps)=> {
       return {showBlogs: !prevState.showBlogs}
     });
-
-    // console.log(this.showBlogs);
   }
-
-
- 
-  // /*let*/showBlogs = true;
-  // /*let*/showBlogs = false;
 
   render(){
     console.log('Render Called');
@@ -116,15 +84,9 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        {/* <button onClick={this.onHideBtnClick}>Hide List</button> */}
         <button onClick={this.onHideBtnClick}>{this.state.showBlogs ? 'Hide': 'Show'} List</button>
         <br></br>
-        {
-          // this.showBlogs ? this.blogCards : null
-          this.state.showBlogs ? blogCards : null
-        }
-        {/* {this.blogCards} */}
-        
+        { this.state.showBlogs ? blogCards : null }
         <div className="BlogCard">
           <h2>Full Name: {this.fName} {this.lName}</h2>
           <h3>Full Name: {`${this.fName} ${this.lName}`}</h3>
