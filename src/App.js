@@ -1,7 +1,6 @@
 import './App.css';
 import BlogItem from './BlogCardd';
 import {isArrayEmpty} from './Utls';
-import './BlogCardd.css';
 import React from 'react';
 
 class App extends React.Component {
