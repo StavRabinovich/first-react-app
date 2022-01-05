@@ -5,12 +5,14 @@ import App from './App';
 import Signup from './Signup'
 import Podcast from './folder_podcast/Podcast'
 import reportWebVitals from './reportWebVitals';
+import Adminn from './AdminAPI'
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
     {/* <Signup /> */}
-    <Podcast />
+    {/* <Podcast /> */}
+    <Adminn />
   </React.StrictMode>,
   document.getElementById('root')
 );

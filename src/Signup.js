@@ -47,7 +47,6 @@ const Signup = () => {
 	  <input className="button" type="submit" onClick={(event) => handleSubmit(event)} />
 		<br/>
 
-    {/* <Podcast/> */}
     </div>
     );
   };
